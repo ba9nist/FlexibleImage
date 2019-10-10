@@ -91,6 +91,11 @@
                     height: size,
                     mipmapped: false
                 )
+                
+                if #available(iOS 9.0, *) {
+                    descriptor.usage = [.shaderRead, .shaderWrite]
+                }
+                
                 #if swift(>=4.0)
                     guard let texture = device.makeTexture(descriptor: descriptor) else { return }
                 #else
